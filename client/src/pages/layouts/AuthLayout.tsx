@@ -1,7 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import FullScreenCard from "../../components/FullScreenCard";
+import Link from "../../components/Link";
 
 function AuthLayout() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+
   // Outlet is a placeholder for the child route
   return (
     <FullScreenCard>
@@ -9,8 +13,11 @@ function AuthLayout() {
         <Outlet />
       </FullScreenCard.Body>
       <FullScreenCard.BelowCard>
-        <a href="/login">Login</a>
-        <a href="/signup">Signup</a>
+        {isLoginPage ? (
+          <Link to="/signup">Don't have an account? Sign up</Link>
+        ) : (
+          <Link to="/login">Already have an account? Log in</Link>
+        )}
       </FullScreenCard.BelowCard>
     </FullScreenCard>
   );

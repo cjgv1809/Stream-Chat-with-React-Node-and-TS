@@ -57,7 +57,7 @@ function Signup() {
           <Input id="imageUrl" type="url" ref={imageUrlRef} />
         </div>
         <Button type="submit" className="mt-4" disabled={signup.isLoading}>
-          {signup.isLoading ? "Signing up..." : "Sign up"}
+          {signup.isLoading ? "Loading..." : "Sign up"}
         </Button>
       </form>
     </>

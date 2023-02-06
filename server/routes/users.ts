@@ -33,4 +33,30 @@ export default async function (app: FastifyInstance) {
       image,
     });
   });
+
+  app.post<{ Body: Pick<UserBody, "id"> }>("/login", async (req, res) => {
+    const { id } = req.body;
+
+    if (!id) {
+      return res.status(400).send({ message: "Bad request" });
+    }
+
+    const {
+      users: [user],
+    } = await streamChat.queryUsers({ id });
+    if (!user) {
+      return res.status(401).send();
+    }
+
+    const token = streamChat.createToken(id);
+
+    return {
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        image: user.image,
+      },
+    };
+  });
 }

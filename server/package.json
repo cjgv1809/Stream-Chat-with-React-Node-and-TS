@@ -16,7 +16,6 @@
     "stream-chat": "^8.3.0"
   },
   "devDependencies": {
-    "@types/fastify-cors": "^2.1.0",
     "@types/node": "^18.11.18",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1"
