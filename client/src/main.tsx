@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import router from "./router";
 import "./index.css";
+import "stream-chat-react/dist/css/index.css";
 
 const queryClient = new QueryClient();
 
